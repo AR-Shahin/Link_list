@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct listNode{
+    int data;
+    struct listNode *next;
+}node;
+node *list;
+
+
+void initial()
+{
+    list = 0;
+}
+
+void insert(int val)
+{
+    node *newNode;
+    newNode = (node*) malloc(sizeof(node));
+    newNode->data = val;
+    newNode->next = list;
+    list = newNode;
+}
+
+void print()
+{
+    node *temp;
+    temp = list;
+    while(temp != NULL)
+    {
+        printf("%d ",temp->data);
+        temp = temp->next;
+    }
+}
+
+void print_value(node *x)
+{
+    if(x == 0)
+    {
+        printf("failed");
+    }
+    else{
+        printf("success");
+    }
+}
+node *search(int val)
+{
+    node *temp;
+    temp = list;
+    while(temp != 0)
+    {
+        if(temp->data == val)
+        {
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return 0;
+}
+int main()
+{
+    int n,a;
+    printf("Enter size How many value do you want ?? : ");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        printf("Enter value : ");
+        scanf("%d",&a);
+        insert(a);
+    }
+    node *rtval;
+
+    print();
+    rtval = search(200);
+    print_value(rtval);
+    return 0;
+}
