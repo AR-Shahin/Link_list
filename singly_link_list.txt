@@ -5,12 +5,11 @@ typedef struct listNode{
     int data;
     struct listNode *next;
 }node;
-node *list;
 
-
+node *head;
 void initial()
 {
-    list = 0;
+    head = 0;
 }
 
 void insert(int val)
@@ -18,14 +17,14 @@ void insert(int val)
     node *newNode;
     newNode = (node*) malloc(sizeof(node));
     newNode->data = val;
-    newNode->next = list;
-    list = newNode;
+    newNode->next = head;
+    head = newNode;
 }
 
 void print()
 {
     node *temp;
-    temp = list;
+    temp = head;
     while(temp != NULL)
     {
         printf("%d ",temp->data);
@@ -45,8 +44,9 @@ void print_value(node *x)
 }
 node *search(int val)
 {
+
     node *temp;
-    temp = list;
+    temp = head;
     while(temp != 0)
     {
         if(temp->data == val)
@@ -59,6 +59,7 @@ node *search(int val)
 }
 int main()
 {
+    initial();
     int n,a;
     printf("Enter size How many value do you want ?? : ");
     scanf("%d",&n);
